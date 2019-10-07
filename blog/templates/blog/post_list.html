@@ -2,15 +2,20 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    {% for post in posts %}
-        <h1>Post ha zire in khat ezafe mishan</h1><br><br>
 
-        <div class="post">
-            <div class="date">
-                <p>published: {{ post.published_date }}</p>
-            </div>
-            <h2><a href="">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
+<h1>Post ha zire in khat ezafe mishan</h1><br><br>
+
+    {% for post in posts %}
+    <div class="post">
+        
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+
+        <p>{{ post.text|linebreaksbr }}</p>
+
+        <div class="date">
+                {{ post.published_date }}
         </div>
+    </div>
     {% endfor %}
+
 {% endblock %}
