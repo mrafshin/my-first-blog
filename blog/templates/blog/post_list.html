@@ -1,38 +1,16 @@
-{% load static %}
-<html>
-    <head>
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <title>Afshin's blog</title>
-        <title>Afshin's First Website!</title>
-    </head>
-    <body>
 
-        <div class="page-header">
-        <h1>Hi there!</h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-        <a><h2>It works!</h2></a>
-        <div>
-            <h1><a href="/">post ha zire in khat mian</a></h1>
-        </div>
-        
-        <div class="content container">
-                <div class="row">
-                    <div class="col-md-8">
-                        {% for post in posts %}
-                            <div class="post">
-                                <div class="date">
-                                    <p>published: {{ post.published_date }}</p>
-                                </div>
-                                <h2><a href="">{{ post.title }}</a></h2>
-                                <p>{{ post.text|linebreaksbr }}</p>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
+{% block content %}
+    {% for post in posts %}
+        <h1>Post ha zire in khat ezafe mishan</h1><br><br>
+
+        <div class="post">
+            <div class="date">
+                <p>published: {{ post.published_date }}</p>
             </div>
-    </body>
-</html>
+            <h2><a href="">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
